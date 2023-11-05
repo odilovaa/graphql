@@ -1,0 +1,74 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreatePostDto {
+  author: Int
+  content: String!
+  title: String!
+}
+
+input CreateProductDto {
+  name: String
+  price: String!
+}
+
+input CreateUserDto {
+  email: String!
+  name: String
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  createPosts(authorId: Float!, createPost: CreatePostDto!): Posts!
+  createProduct(createProduct: CreateProductDto!): Product!
+  createUser(createUser: CreateUserDto!): User!
+  removeProduct(id: ID!): Float!
+  removeUser(id: ID!): Float!
+  updateProduct(id: Float!, updateProduct: UpdateProductDto!): Product!
+  updateUser(id: Float!, updateUser: UpdateUserDto!): User!
+}
+
+type Posts {
+  author: User!
+  content: String!
+  id: ID!
+  title: String!
+}
+
+type Product {
+  id: ID!
+  name: String!
+  price: String!
+}
+
+type Query {
+  findAllPosts: [Posts!]!
+  findAllProduct: [Product!]!
+  findAllUser: [User!]!
+  findOneProduct(id: Float!): Product!
+  findOneUser(id: Float!): User!
+}
+
+input UpdateProductDto {
+  name: String
+  price: String!
+}
+
+input UpdateUserDto {
+  email: String
+  name: String
+}
+
+type User {
+  createAt: DateTime!
+  email: String!
+  id: ID!
+  name: String
+  posts: [Posts!]!
+  updateAt: DateTime!
+}
